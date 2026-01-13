@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { NAV_LINKS, SKILLS, PROJECTS } from './constants';
 import { RadarChart } from './components/RadarChart';
 import { ChatAssistant } from './components/ChatAssistant';
+import { BkashPayment } from './components/BkashPayment';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -49,21 +50,21 @@ const App: React.FC = () => {
               Bridging the gap between hardware and software through innovative engineering.
             </p>
             <div className="flex gap-4">
-              <button className="bg-primary text-white px-8 py-3 rounded-xl font-semibold hover:translate-y-[-2px] transition-transform shadow-xl shadow-primary/20">
+              <a href="#projects" className="bg-primary text-white px-8 py-3 rounded-xl font-semibold hover:translate-y-[-2px] transition-transform shadow-xl shadow-primary/20 block">
                 View Projects
-              </button>
-              <button className="glass-card px-8 py-3 rounded-xl font-semibold hover:bg-slate-800 transition-colors">
+              </a>
+              <a href="#about" className="glass-card px-8 py-3 rounded-xl font-semibold hover:bg-slate-800 transition-colors block">
                 About Me
-              </button>
+              </a>
             </div>
           </div>
           <div className="relative">
-            <div className="w-full aspect-square rounded-3xl overflow-hidden relative z-10 border border-white/10 group">
+            <div className="w-full aspect-square rounded-3xl overflow-hidden relative z-10 border border-white/10 group shadow-2xl shadow-primary/5">
               <img src="https://picsum.photos/seed/motinur/800/800" alt="Motinur" className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent"></div>
             </div>
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary/20 blur-3xl rounded-full"></div>
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 blur-3xl rounded-full"></div>
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary/20 blur-3xl rounded-full animate-pulse"></div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 blur-3xl rounded-full animate-pulse"></div>
           </div>
         </div>
       </section>
@@ -73,7 +74,7 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-12">
             <div className="md:col-span-1">
-              <h2 className="text-3xl font-display font-bold mb-4">Academic <br/>Foundations</h2>
+              <h2 className="text-3xl font-display font-bold mb-4 text-white">Academic <br/>Foundations</h2>
               <div className="w-12 h-1 bg-primary mb-6"></div>
               <p className="text-slate-400 italic">
                 "Learning at University of Chittagong has broadened my horizons in electrical sciences."
@@ -106,15 +107,15 @@ const App: React.FC = () => {
             <RadarChart skills={SKILLS.filter(s => s.category === 'Core EEE')} />
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-primary">Key Disciplines</h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {SKILLS.map(skill => (
                   <div key={skill.name} className="glass-card p-4 rounded-xl border-l-4 border-primary/40">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-semibold">{skill.name}</span>
                       <span className="text-xs text-primary">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-slate-800 h-1 rounded-full">
-                      <div className="bg-primary h-full rounded-full" style={{ width: `${skill.level}%` }}></div>
+                    <div className="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+                      <div className="bg-primary h-full rounded-full transition-all duration-1000" style={{ width: `${skill.level}%` }}></div>
                     </div>
                   </div>
                 ))}
@@ -127,12 +128,12 @@ const App: React.FC = () => {
       {/* Projects Section */}
       <section id="projects" className="py-24 bg-slate-900/50 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
               <h2 className="text-4xl font-display font-bold mb-4">Featured Works</h2>
               <p className="text-slate-400">Selected academic and personal engineering projects.</p>
             </div>
-            <button className="text-primary hover:underline font-semibold flex items-center gap-2">
+            <button className="text-primary hover:underline font-semibold flex items-center gap-2 mt-4 md:mt-0">
               View All <i className="fa-solid fa-arrow-right text-xs"></i>
             </button>
           </div>
@@ -157,6 +158,42 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Payment Section */}
+      <section id="payment" className="py-24 px-6 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-display font-bold mb-4">Support My Research</h2>
+            <p className="text-slate-400">Donations help fund my upcoming EEE projects and component purchases.</p>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h3 className="text-3xl font-display font-bold">Secure <span className="text-[#e2136e]">bKash</span> Payment</h3>
+              <p className="text-slate-400 leading-relaxed">
+                I'm currently working on a high-efficiency smart inverter project. 
+                Your contribution directly supports hardware prototyping and testing.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3 text-slate-300">
+                  <i className="fa-solid fa-shield-halved text-green-500"></i>
+                  Secure 256-bit encrypted gateway simulation.
+                </li>
+                <li className="flex items-center gap-3 text-slate-300">
+                  <i className="fa-solid fa-bolt text-yellow-500"></i>
+                  Instant confirmation and project credits.
+                </li>
+              </ul>
+              <div className="p-6 glass-card rounded-2xl border-l-4 border-[#e2136e]">
+                <p className="text-xs text-slate-500 uppercase font-bold mb-1">Note</p>
+                <p className="text-sm text-slate-400">This is a functional UI prototype. No real money will be deducted during this demonstration.</p>
+              </div>
+            </div>
+            <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
+              <BkashPayment />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-24 px-6">
         <div className="max-w-3xl mx-auto glass-card p-10 rounded-3xl border-primary/20 relative">
@@ -168,16 +205,16 @@ const App: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-xs font-bold text-slate-500 uppercase">Name</label>
-                <input type="text" className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all" />
+                <input type="text" className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all text-white" />
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-bold text-slate-500 uppercase">Email</label>
-                <input type="email" className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all" />
+                <input type="email" className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all text-white" />
               </div>
             </div>
             <div className="space-y-2">
               <label className="text-xs font-bold text-slate-500 uppercase">Message</label>
-              <textarea rows={4} className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all"></textarea>
+              <textarea rows={4} className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all text-white"></textarea>
             </div>
             <button className="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
               Send Message
